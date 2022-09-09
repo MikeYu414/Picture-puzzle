@@ -81,12 +81,12 @@ class Game {
          this.randomOrder();
          this._state = this.Processing;
          $("#start").hide();
-         $(".fragment").click(e => {
+         $(".fragment").on("click",(e => {
             var p = $(e.target).attr("data-position").split(",");
             var x = p[0];
             var y = p[1];
             this.click(x, y);
-         });
+         }));
       }, 300);
    }
    getRandom(max){
@@ -114,7 +114,9 @@ class Game {
       $("#preview").css({background: `url(${this._img}) 0 0 no-repeat`, "background-size": "240px 240px"});
    }
    constructor(){
-
+      if (window.innerWidth < 480) {
+         this.BoxWidth = 320;
+      }
    }
 
    start(){
@@ -245,19 +247,19 @@ class Game {
 
 $(function() {
    var game = new Game();
-   $("#start").click(e => {
+   $("#start").on("click",(e => {
       game.start();
-   });
-   $("#pause").click(e => {
+   }));
+   $("#pause").on("click",(e => {
       game.pauseSW();
       $("#pausepanel").show();
-   });
-   $("#restart").click(e => {
+   }));
+   $("#restart").on("click",(e => {
       game.stopSW();
       game.start();
-   });
-   $("#continue").click(e => {
+   }));
+   $("#continue").on("click",(e => {
       $("#pausepanel").hide();
       game.startSW();
-   });
+   }));
 })
