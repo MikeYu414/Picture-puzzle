@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Picture puzzle</title>
+    <style type="text/css">
+        html{
+            background-color: #a6a6a6;
+        }
+        body{
+            margin: 0;
+        }
+        .box{
+            background-color: antiquewhite;
+            top:150px;
+            width: 480px;
+            height: 480px;
+            margin: auto;
+        }
+        .head{
+            height: 110px;
+            background-color: #c8f9fb;
+            margin-bottom: 70px;
+        }
+        .fragment{
+            position: absolute;
+            border-color: #e2e0e0;
+            box-sizing: border-box;
+            border-style: solid;
+            transition: all .3s ease;
+            border-width: 1px;
+            cursor: pointer;
+        }
+        #scorepanel{
+            right: 20px;
+            position: absolute;
+            width: 300px;
+            height: 350px;
+        }
+        #preview{
+            height: 240px;
+            width: 240px;
+        }
+        .buttons{
+            margin-top: 20px;
+        }
+        #start, #pause{
+            margin-right: 10px;
+            border-radius: 50%;
+            height: 40px;
+        }
+        #pause{
+            background-color: #f6304c;
+            color: white;
+            border-color: #6a6a6a;
+        }
+        #start{
+            background-color: #7df0a0;
+            color: #11031f;
+            border-color: #dca6a6;
+        }
+        #restart{
+            border-radius: 20px;
+            height: 40px;
+            background-color: #7df0a0;
+            color: #1d1919;
+            border-color: #dca6a6;
+        }
+        button:hover{
+            transform: scale(1.2);
+            transition: all .3s ease;
+            cursor: pointer;
+        }
+        #pausepanel{
+            height: 100vh;
+            width: 100vw;
+            background-color: #000;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            text-align: center;
+            display: flex;
+        }
+        #continue:hover{
+            transition: all .3s ease;
+            font-size: 20px;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="head">
+        <h1 style="text-align: center;font-size: 76px;color: #414242;">拼图游戏</h1>
+    </div>
+    <div id="scorepanel">
+        <h2>记分板</h2>
+        <div style="margin: 10px 0;font-weight: 900;">
+            <span>关卡：</span>
+            <span id="level"></span>
+        </div>
+        <div style="margin: 10px 0;font-weight: 900;">
+            <span>用时：</span>
+            <span id="time" style="color: white;"></span>
+        </div>
+        <div id="preview">
+
+        </div>
+        <div class="buttons">
+            <button id="start">开始</button>
+            <button id="pause">暂停</button>
+            <button id="restart">重新开始</button>
+        </div>
+    </div>
+    <div class="box">
+    </div>
+    <div id="pausepanel" style="display: none;">
+        <div style="margin: auto;width: 100%;">
+            <h1 style="background-color: #eee;height: 73px;font-size: 50px;user-select: none;">暂停</h1>
+            <span id="continue" style="background-color: #fff; padding: 7px 67px; border-radius: 50px;user-select: none;cursor: pointer;">点我继续</span>
+        </div>
+    </div>
+</body>
+</html>
